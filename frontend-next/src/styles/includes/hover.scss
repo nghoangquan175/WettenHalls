@@ -1,0 +1,102 @@
+// Global Transition
+.hoverTransition {
+  transition: all 0.3s ease-in-out;
+}
+
+// Button Hover Styles
+.btnHoverRed {
+  @extend .hoverTransition;
+  &:hover {
+    background-color: #a6192e; /* coreRed800 */
+    color: #ffffff; /* baseIron00 */
+  }
+}
+
+.btnHoverAmber {
+  @extend .hoverTransition;
+  &:hover {
+    background-color: #ee6a08; /* accentAmber600 */
+    color: #ffffff; /* baseIron00 */
+  }
+}
+
+.btnHoverDark {
+  @extend .hoverTransition;
+  &:hover {
+    background-color: #414b4b; /* baseIron800 */
+  }
+}
+
+// Link Hover Styles
+.linkHover {
+  @extend .hoverTransition;
+  &:hover {
+    opacity: 0.8;
+    color: #da2435; /* coreRed600 */
+  }
+}
+
+// Icon Scale Effect
+.iconHoverScale {
+  @extend .hoverTransition;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Card Lift Effect
+.cardHoverLift {
+  @extend .hoverTransition;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Advanced Hover Effects
+.hoverRunBottom {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #da2435; /* coreRed600 */
+    transition: width 0.3s ease-in-out;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.activeMenu {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: #da2435; /* coreRed600 */
+  }
+}
+
+.hoverBorderBottom {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+  }
+  &:hover::after {
+    background-color: #da2435; /* coreRed600 */
+  }
+}

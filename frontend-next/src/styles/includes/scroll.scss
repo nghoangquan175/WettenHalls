@@ -1,0 +1,62 @@
+/* Scroll-Triggered Entry Animations */
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Triggered by .scrolled state on parent */
+.scrolled {
+  .runFromLeft {
+    animation: slideInLeft 1s ease-out forwards !important;
+  }
+
+  .runFromRight {
+    animation: slideInRight 1s ease-out forwards !important;
+  }
+
+  .runFromBottom {
+    animation: slideInUp 1s ease-out forwards !important;
+  }
+}
+
+/* Reveal Utilities */
+.revealOnScroll {
+  opacity: 0;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+
+  &.isVisible {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,241 @@
+@layer utilities {
+  /* Display/2XL/Poster */
+  .Display2XLPoster {
+    font-family: 'Zetta Sans';
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 80%;
+    letter-spacing: -4px;
+    /* 102.4px */
+  }
+
+  /* Display/XL/Poster */
+  .DisplayXLPoster {
+    font-family: 'Zetta Sans';
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 80%;
+    letter-spacing: -4px;
+    /* 51.2px */
+  }
+
+  /* Display/L/Poster */
+  .DisplayLPoster {
+    font-family: 'Zetta Sans';
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 80%;
+    letter-spacing: -4px;
+    white-space: pre-line;
+  }
+
+  /* Display/M/Poster */
+  .DisplayMPoster {
+    font-family: 'Zetta Sans';
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 80%;
+    letter-spacing: -4px;
+    white-space: pre-line;
+  }
+
+  /* Display/S/Poster */
+  .DisplaySPoster {
+    font-family: 'Zetta Sans';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 80%;
+    letter-spacing: -4px;
+    /* 32px */
+  }
+
+  /* Display/XL/Regular */
+  .DisplayXLRegular {
+    font-family: 'Zetta Sans';
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 100%;
+    letter-spacing: -4px;
+    /* 64px */
+  }
+
+  /* Display/L/Regular */
+  .DisplayLRegular {
+    font-family: 'Zetta Sans';
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 100%;
+    letter-spacing: -4px;
+    /* 56px */
+  }
+
+  /* Display/M/Regular */
+  .DisplayMRegular {
+    font-family: 'Zetta Sans';
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 100%;
+    letter-spacing: -4px;
+    /* 48px */
+  }
+
+  /* Display/S/Regular */
+  .DisplaySRegular {
+    font-family: 'Zetta Sans';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 100%;
+    letter-spacing: -4px;
+    /* 40px */
+  }
+
+  /* Heading/L/Bold */
+  .HeadingLBold {
+    font-family: 'Zetta Sans';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 32px */
+  }
+
+  /* Heading/M/Bold */
+  .HeadingMBold {
+    font-family: 'Zetta Sans';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 28px */
+  }
+
+  /* Heading/S/Bold */
+  .HeadingSBold {
+    font-family: 'Zetta Sans';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 24px */
+  }
+
+  /* Content/XL/Bold */
+  .ContentXLBold {
+    font-family: 'Zetta Sans';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 24px */
+  }
+
+  /* Content/XL/Regular */
+  .ContentXLRegular {
+    font-family: 'Zetta Sans';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    /* 24px */
+  }
+
+  /* Content/L/Bold */
+  .ContentLBold {
+    font-family: 'Zetta Sans';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 21.6px */
+  }
+
+  /* Content/L/Regular */
+  .ContentLRegular {
+    font-family: 'Zetta Sans';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    /* 21.6px */
+  }
+
+  /* Content/M/Bold */
+  .ContentMBold {
+    font-family: 'Zetta Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 19.2px */
+  }
+
+  /* Content/M/Regular */
+  .ContentMRegular {
+    font-family: 'Zetta Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 19.2px */
+  }
+
+  /* Content/S/Bold */
+  .ContentSBold {
+    font-family: 'Zetta Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 16.8px */
+  }
+
+  /* Content/S/Regular */
+  .ContentSRegular {
+    font-family: 'Zetta Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    /* 16.8px */
+  }
+
+  /* Content/XS/Bold */
+  .ContentXSBold {
+    font-family: 'Zetta Sans';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 14.4px */
+  }
+
+  /* Content/XS/Regular */
+  .ContentXSRegular {
+    font-family: 'Zetta Sans';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    /* 14.4px */
+  }
+
+  /* Content/Button */
+  .ContentButton {
+    font-family: 'Zetta Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -3px;
+    /* 16px */
+  }
+}

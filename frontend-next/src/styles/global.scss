@@ -1,0 +1,28 @@
+@config "../../tailwind.config.ts";
+@import 'tailwindcss';
+
+html {
+  overflow-x: hidden;
+}
+
+@import 'includes/family-fonts';
+@import 'includes/typos-fonts';
+@import 'includes/hover';
+@import 'includes/scroll';
+@import 'includes/slide';
+@import 'includes/animation';
+@import 'includes/rich-text';
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari and Opera */
+    }
+  }
+}

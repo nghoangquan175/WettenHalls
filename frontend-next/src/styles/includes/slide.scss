@@ -1,0 +1,103 @@
+/* Slider Visual Components */
+
+.slideContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slideTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Pagination Dots */
+.slideDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.slideDot {
+  width: 10px;
+  height: 10px;
+  background: #b7c2c2; /* baseIron300 */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #f67679; /* coreRed400 */
+  }
+
+  &.dotActive {
+    width: 24px;
+    height: 10px;
+    background: #a6192e; /* coreRed800 */
+    border-radius: 12px;
+  }
+}
+
+/* Navigation Arrows */
+.slideArrow {
+  width: 44px;
+  height: 44px;
+  background: #ffffff; /* baseIron00 */
+  border: 1px solid #d6dcdc; /* baseIron200 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #262b2b; /* baseIron950 */
+
+  &:hover {
+    background: #a6192e; /* coreRed800 */
+    border-color: #a6192e; /* coreRed800 */
+    color: #ffffff; /* baseIron00 */
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Brand Logo Ticker (Horizontal Infinite Scroll) */
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logoTicker {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 30s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Entry Animations */
+@keyframes slideInDown {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animateSlideInDown {
+  animation: slideInDown 0.6s ease-out forwards;
+}
