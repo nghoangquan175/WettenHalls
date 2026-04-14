@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 async function getGlobalData() {
   try {
-    const res = await fetch('http://localhost:5000/api/navigation/public', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/navigation/public`, {
       next: { revalidate: 10 },
     });
     return await res.json();

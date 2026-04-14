@@ -41,7 +41,7 @@ async function getArticles() {
   // }
 
   try {
-    const res = await fetch('http://localhost:5000/api/articles/published', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/articles/published`, {
       cache: 'no-store',
     });
 

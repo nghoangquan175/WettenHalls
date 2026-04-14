@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import SingleArticle from './SingleArticle';
 async function getArticle(slug: string) {
   try {
-    const res = await fetch(`http://localhost:5000/api/articles/public/${slug}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/articles/public/${slug}`, {
       cache: 'no-store',
     });
 
