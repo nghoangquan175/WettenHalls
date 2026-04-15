@@ -19,7 +19,7 @@
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "postbuildSaved": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install frontend-next/.husky || true"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

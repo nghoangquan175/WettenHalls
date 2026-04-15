@@ -1,0 +1,107 @@
+name: Deploy Next.js to Azure VM
+
+on:
+  push:
+    branches: [main] # Đổi thành master nếu nhánh chính của bạn là master
+
+env:
+  REGISTRY: ghcr.io
+  # Đảm bảo viết chữ thường toàn bộ
+  FRONTEND_IMAGE: ghcr.io/${{ github.repository_owner }}/wettenhalls-frontend-next
+
+jobs:
+  # ---- Job 1: CI Check (Kiểm tra code trước khi build) ----
+  ci-check:
+    name: CI Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Frontend - Install, Lint & Build
+        # Sửa lại tên thư mục chứa code Next.js của bạn nếu khác
+        working-directory: ./frontend-next 
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+        env:
+          # Cấp mock data để Next.js không báo lỗi lúc chạy CI Build
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'http://localhost:1337' }}
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || 'dummy' }}
+
+  # ---- Job 2: Build & Push Docker Image lên GHCR ----
+  build-and-push:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest
+    needs: ci-check
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & Push Frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend-next
+          push: true
+          tags: |
+            ${{ env.FRONTEND_IMAGE }}:latest
+            ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
+          # TRUYỀN BIẾN PUBLIC LÚC BUILD VÀO DOCKERFILE
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
+            NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
+
+  # ---- Job 3: Kéo Image về Azure VM và chạy ----
+  deploy:
+    name: Deploy to Azure VM
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          script: |
+            # 1. Login vào GHCR trên Server
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
+            # 2. Pull image mới nhất về
+            docker pull ${{ env.FRONTEND_IMAGE }}:latest
+            
+            # 3. Dừng và xóa container cũ (nếu có)
+            docker stop nextjs-frontend || true
+            docker rm nextjs-frontend || true
+            
+            # 4. Chạy container mới (TRUYỀN CÁC BIẾN SECRET LÚC CHẠY)
+            # Lưu ý: Cổng 4000:4000 có thể đổi tùy port bạn config trên Azure
+            docker run -d \
+              --name nextjs-frontend \
+              -p 4000:4000 \
+              -e STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }} \
+              -e RECAPTCHA_SECRET_KEY=${{ secrets.RECAPTCHA_SECRET_KEY }} \
+              -e SITE_URL=${{ secrets.SITE_URL }} \
+              --restart unless-stopped \
+              ${{ env.FRONTEND_IMAGE }}:latest
+
+            # 5. Dọn dẹp rác Docker
+            docker image prune -f
+
+            echo "✅ Deploy Next.js completed!"
