@@ -32,6 +32,7 @@ jobs:
         env:
           # Cấp mock data để Next.js không báo lỗi lúc chạy CI Build
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'http://localhost:1337' }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || 'dummy' }}
 
   # ---- Job 2: Build & Push Docker Image lên GHCR ----
