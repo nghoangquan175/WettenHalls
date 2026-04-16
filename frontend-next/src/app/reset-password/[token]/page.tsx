@@ -74,7 +74,7 @@ const ResetPasswordPage = () => {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6 w-full animate-in fade-in duration-500'>
+            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6 w-full animate-in fade-in duration-500'>
               <div className='flex flex-col gap-2'>
                 <h2 className='HeadingLBold text-white'>Reset Password</h2>
                 <p className='ContentMRegular text-white/60'>Enter your new password below.</p>
@@ -86,6 +86,7 @@ const ResetPasswordPage = () => {
                   <input
                     {...register('password')}
                     type='password'
+                    autoComplete='new-password'
                     placeholder='••••••••'
                     className={`w-full bg-white/5 border ${errors.password ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
                   />
@@ -97,6 +98,7 @@ const ResetPasswordPage = () => {
                   <input
                     {...register('confirmPassword')}
                     type='password'
+                    autoComplete='new-password'
                     placeholder='••••••••'
                     className={`w-full bg-white/5 border ${errors.confirmPassword ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
                   />

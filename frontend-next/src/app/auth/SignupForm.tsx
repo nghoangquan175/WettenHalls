@@ -178,7 +178,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onInitialSubmit)} className='flex flex-col gap-5 w-full max-w-sm animate-in fade-in duration-500'>
+    <form onSubmit={handleSubmit(onInitialSubmit)} autoComplete='off' className='flex flex-col gap-5 w-full max-w-sm animate-in fade-in duration-500'>
       <div className='flex flex-col gap-2'>
         <h2 className='HeadingLBold text-white text-center'>Create Account</h2>
         <p className='ContentMRegular text-white/60 text-center'>Join WettenHalls family today</p>
@@ -191,7 +191,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
           <input
             {...register('name')}
             type='text'
-            placeholder='John Doe'
+            autoComplete='off'
+            placeholder='Your full name'
             className={`w-full bg-white/5 border ${errors.name ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
           />
           {errors.name && <span className='text-red-500 text-xs ml-1'>{errors.name.message}</span>}
@@ -202,7 +203,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
           <input
             {...register('email')}
             type='email'
-            placeholder='your@email.com'
+            autoComplete='off'
+            placeholder='email@domain.com'
             className={`w-full bg-white/5 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
           />
           {errors.email && <span className='text-red-500 text-xs ml-1'>{errors.email.message}</span>}
@@ -213,7 +215,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
           <input
             {...register('password')}
             type='password'
-            placeholder='••••••••'
+            autoComplete='new-password'
+            placeholder='at least 8 characters'
             className={`w-full bg-white/5 border ${errors.password ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
           />
           {errors.password && <span className='text-red-500 text-xs ml-1'>{errors.password.message}</span>}
@@ -224,7 +227,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
           <input
             {...register('confirmPassword')}
             type='password'
-            placeholder='••••••••'
+            autoComplete='new-password'
+            placeholder='confirm password'
             className={`w-full bg-white/5 border ${errors.confirmPassword ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
           />
           {errors.confirmPassword && <span className='text-red-500 text-xs ml-1'>{errors.confirmPassword.message}</span>}
