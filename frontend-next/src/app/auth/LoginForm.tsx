@@ -10,7 +10,7 @@ import { useAuth } from '@/context/AuthContext';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(1, 'Password is required'),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -70,7 +70,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup, onSwitchToForgo
           <input
             {...register('email')}
             type='email'
-            placeholder='your@email.com'
+            placeholder='email@domain.com'
             className={`w-full bg-white/5 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-all`}
           />
           {errors.email && <span className='text-red-500 text-xs ml-1'>{errors.email.message}</span>}
