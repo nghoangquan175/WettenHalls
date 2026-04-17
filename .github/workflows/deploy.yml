@@ -96,7 +96,7 @@ jobs:
             # Lưu ý: Cổng 4000:4000 có thể đổi tùy port bạn config trên Azure
             docker run -d \
               --name nextjs-frontend \
-              -p 4000:4000 \
+              --network wettenhalls-net \
               -e STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }} \
               -e RECAPTCHA_SECRET_KEY=${{ secrets.RECAPTCHA_SECRET_KEY }} \
               -e SITE_URL=${{ vars.SITE_URL }} \
